@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Notice Maker AI</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- PNG Library -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+    </script>
+
+    <!-- PDF Library -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         NAVBAR
+    =============================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            📢 Notice Maker AI
+        </div>
+
+        <div class="badge">
+            Powered by Gemini 🤖
+        </div>
+
+    </header>
+
+
+
+    <main class="container">
+
+
+        <!-- ==============================
+             HERO
+        =============================== -->
+
+        <section class="hero">
+
+            <h1>
+                Create Professional Notices with AI
+            </h1>
+
+            <p>
+                Enter your details and let AI create
+                a professional notice in seconds.
+            </p>
+
+        </section>
+
+
+
+        <!-- ==============================
+             QUICK TEMPLATES
+        =============================== -->
+
+        <section class="quick-template-section">
+
+            <div class="quick-template-header">
+
+                <div>
+
+                    <h2>
+                        ⚡ Quick Templates
+                    </h2>
+
+                    <p>
+                        Choose a template to quickly
+                        fill your notice details.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="template-grid">
+
+
+                <button
+                    type="button"
+                    class="template-card"
+                    onclick="applyTemplate('college-event')"
+                >
+
+                    <span class="template-icon">
+                        🎓
+                    </span>
+
+                    <strong>
+                        College Event
+                    </strong>
+
+                    <small>
+                        Event announcements
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="template-card"
+                    onclick="applyTemplate('holiday')"
+                >
+
+                    <span class="template-icon">
+                        🏖️
+                    </span>
+
+                    <strong>
+                        Holiday
+                    </strong>
+
+                    <small>
+                        Holiday announcements
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="template-card"
+                    onclick="applyTemplate('exam')"
+                >
+
+                    <span class="template-icon">
+                        📝
+                    </span>
+
+                    <strong>
+                        Exam Notice
+                    </strong>
+
+                    <small>
+                        Exam schedules
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="template-card"
+                    onclick="applyTemplate('placement')"
+                >
+
+                    <span class="template-icon">
+                        💼
+                    </span>
+
+                    <strong>
+                        Placement
+                    </strong>
+
+                    <small>
+                        Placement drives
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="template-card"
+                    onclick="applyTemplate('sports')"
+                >
+
+                    <span class="template-icon">
+                        🏆
+                    </span>
+
+                    <strong>
+                        Sports Event
+                    </strong>
+
+                    <small>
+                        Sports activities
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="template-card"
+                    onclick="applyTemplate('workshop')"
+                >
+
+                    <span class="template-icon">
+                        🎤
+                    </span>
+
+                    <strong>
+                        Workshop
+                    </strong>
+
+                    <small>
+                        Seminars and workshops
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="template-card"
+                    onclick="applyTemplate('meeting')"
+                >
+
+                    <span class="template-icon">
+                        👥
+                    </span>
+
+                    <strong>
+                        Meeting
+                    </strong>
+
+                    <small>
+                        Staff and student meetings
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="template-card"
+                    onclick="applyTemplate('deadline')"
+                >
+
+                    <span class="template-icon">
+                        ⏰
+                    </span>
+
+                    <strong>
+                        Deadline
+                    </strong>
+
+                    <small>
+                        Assignment deadlines
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="template-card"
+                    onclick="applyTemplate('fest')"
+                >
+
+                    <span class="template-icon">
+                        🎉
+                    </span>
+
+                    <strong>
+                        College Fest
+                    </strong>
+
+                    <small>
+                        Cultural events
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="template-card"
+                    onclick="applyTemplate('emergency')"
+                >
+
+                    <span class="template-icon">
+                        🚨
+                    </span>
+
+                    <strong>
+                        Emergency
+                    </strong>
+
+                    <small>
+                        Urgent announcements
+                    </small>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             WORKSPACE
+        =============================== -->
+
+        <div class="workspace">
+
+
+            <!-- ==============================
+                 LEFT SIDE
+            =============================== -->
+
+            <section class="card form-card">
+
+                <h2>
+                    📝 Notice Details
+                </h2>
+
+
+
+                <label>
+                    Notice Type
+                </label>
+
+                <select id="noticeType">
+
+                    <option value="College Notice">
+                        College Notice
+                    </option>
+
+                    <option value="School Notice">
+                        School Notice
+                    </option>
+
+                    <option value="Event Notice">
+                        Event Notice
+                    </option>
+
+                    <option value="Exam Notice">
+                        Exam Notice
+                    </option>
+
+                    <option value="Holiday Notice">
+                        Holiday Notice
+                    </option>
+
+                    <option value="Meeting Notice">
+                        Meeting Notice
+                    </option>
+
+                    <option value="Workshop Notice">
+                        Workshop / Seminar
+                    </option>
+
+                    <option value="Sports Notice">
+                        Sports Notice
+                    </option>
+
+                    <option value="Placement Notice">
+                        Placement Notice
+                    </option>
+
+                    <option value="Competition Notice">
+                        Competition Notice
+                    </option>
+
+                    <option value="Announcement">
+                        Announcement
+                    </option>
+
+                    <option value="Circular">
+                        Circular
+                    </option>
+
+                    <option value="Custom Notice">
+                        Custom Notice
+                    </option>
+
+                </select>
+
+
+
+                <label>
+                    Writing Tone
+                </label>
+
+                <select id="tone">
+
+                    <option value="Formal">
+                        Formal
+                    </option>
+
+                    <option value="Professional">
+                        Professional
+                    </option>
+
+                    <option value="Simple">
+                        Simple and Easy to Understand
+                    </option>
+
+                    <option value="Urgent">
+                        Urgent
+                    </option>
+
+                    <option value="Friendly">
+                        Friendly
+                    </option>
+
+                </select>
+
+
+
+                <label>
+                    Notice Length
+                </label>
+
+                <select id="length">
+
+                    <option value="Short">
+                        Short
+                    </option>
+
+                    <option
+                        value="Medium"
+                        selected
+                    >
+                        Medium
+                    </option>
+
+                    <option value="Detailed">
+                        Detailed
+                    </option>
+
+                </select>
+
+
+
+                <label>
+                    Notice Design
+                </label>
+
+                <select id="design">
+
+                    <option value="official">
+                        🏛️ Official
+                    </option>
+
+                    <option value="modern">
+                        ✨ Modern
+                    </option>
+
+                    <option value="classic">
+                        📜 Classic
+                    </option>
+
+                    <option value="college">
+                        🎓 College
+                    </option>
+
+                    <option value="minimal">
+                        🧊 Minimal
+                    </option>
+
+                </select>
+
+
+
+                <label>
+                    Institution Name
+                </label>
+
+                <input
+                    type="text"
+                    id="institution"
+                    placeholder="Example: FX Engineering College"
+                >
+
+
+
+                <label>
+                    Notice Title
+                </label>
+
+
+                <div class="title-input-group">
+
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Enter notice title"
+                    >
+
+
+                    <button
+                        type="button"
+                        id="suggestTitleBtn"
+                        onclick="suggestTitles()"
+                    >
+                        💡 Suggest Titles
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="titleSuggestions"
+                    class="title-suggestions"
+                ></div>
+
+
+
+                <div class="row">
+
+                    <div>
+
+                        <label>
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="date"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="time"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <label>
+                    Venue
+                </label>
+
+                <input
+                    type="text"
+                    id="venue"
+                    placeholder="Example: College Auditorium"
+                >
+
+
+
+                <label>
+                    Notice Description
+                </label>
+
+                <textarea
+                    id="description"
+                    rows="5"
+                    placeholder="Enter the details of the notice..."
+                ></textarea>
+
+
+
+                <label>
+                    Additional Instructions
+                </label>
+
+                <textarea
+                    id="instructions"
+                    rows="3"
+                    placeholder="Any additional information..."
+                ></textarea>
+
+
+
+                <button
+                    id="generateBtn"
+                    onclick="generateNotice()"
+                >
+                    ✨ Generate Notice
+                </button>
+
+            </section>
+
+
+
+            <!-- ==============================
+                 RIGHT SIDE
+            =============================== -->
+
+            <section class="card preview-card">
+
+
+                <div class="preview-header">
+
+                    <h2>
+                        👀 Notice Preview
+                    </h2>
+
+                    <span id="status">
+                        Ready
+                    </span>
+
+                </div>
+
+
+
+                <div
+                    id="noticePreview"
+                    class="notice-paper"
+                >
+
+                    <div class="empty-preview">
+
+                        <div>
+                            📄
+                        </div>
+
+                        <h3>
+                            Your notice will appear here
+                        </h3>
+
+                        <p>
+                            Fill in the details and click
+                            Generate Notice.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="actions">
+
+                    <button
+                        type="button"
+                        onclick="copyNotice()"
+                    >
+                        📋 Copy
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="window.print()"
+                    >
+                        🖨️ Print
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="downloadPNG()"
+                    >
+                        🖼️ PNG
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="downloadPDF()"
+                    >
+                        📄 PDF
+                    </button>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
